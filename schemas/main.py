@@ -1,11 +1,11 @@
 from typing import Optional, List
-from datetime import datetime
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, validator, ValidationError
+from datetime import date
 
 
 class QualityBase(BaseModel):
     team: str
-    date: datetime = datetime.today()
+    date: date
     demand_count: int
     once_pass_count: int
     dev_review_count: int
@@ -22,7 +22,7 @@ class QualityCreate(QualityBase):
 
 class Quality(QualityBase):
     id: int
-    product_id: int
+    production_id: int
 
     class Config:
         orm_mode = True

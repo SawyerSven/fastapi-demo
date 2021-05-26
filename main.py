@@ -2,7 +2,7 @@ import uvicorn
 
 from fastapi import FastAPI
 
-from routes import production
+from routes import production, qualities
 
 from database.main import Base, engine
 
@@ -10,7 +10,7 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI(debug=True)
 
-# app.include_router(qualities.router)
+app.include_router(qualities.router)
 app.include_router(production.router)
 
 if __name__ == '__main__':

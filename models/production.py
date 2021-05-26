@@ -1,6 +1,7 @@
 from sqlalchemy import String, Integer, Column
 from sqlalchemy.orm import relationship
 from database.main import Base
+from .qualities import Quality
 
 
 class Production(Base):
@@ -10,4 +11,4 @@ class Production(Base):
     name = Column(String, unique=True, index=True)
     type = Column(Integer, index=True)
 
-    qualities = relationship('Quality', back_populates="productions")
+    qualities = relationship(Quality, back_populates="productions")

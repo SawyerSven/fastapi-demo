@@ -1,6 +1,5 @@
-from sqlalchemy import String, Integer, Column, ForeignKey, Date
+from sqlalchemy import String, Integer, Column, ForeignKey,Date
 from sqlalchemy.orm import relationship
-
 from database.main import Base
 
 
@@ -33,6 +32,6 @@ class Quality(Base):
     # 发布无更变数
     publish_not_modify_count = Column(Integer)
 
-    product_id = Column(Integer, ForeignKey('productions.id'))
+    production_id = Column(Integer, ForeignKey('productions.id'))
 
     productions = relationship("Production", back_populates="qualities")

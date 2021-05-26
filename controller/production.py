@@ -9,3 +9,7 @@ def create_product(db: Session, production: schemas.ProductionCreate):
     db.commit()
     db.refresh(db_production)
     return db_production
+
+
+def get_all_production(offset: int, limit: int, db: Session):
+    return db.query(Production).offset(offset).limit(limit).all()
